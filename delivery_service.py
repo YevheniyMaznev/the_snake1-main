@@ -1,8 +1,4 @@
-# номер и дата проверки на контесте 106928781 8 фев 2024, 22:15:15
-weights: list = list(map(int, input().split()))
-limit = int(input())
-
-
+# Номер и дата проверки на контесте 10 фев 2024, 19:46:44 107061542
 def delivery_service(weights: list[int], limit: int) -> int:
     count_platforms: int = 0
     left_pointer: int = 0
@@ -11,13 +7,15 @@ def delivery_service(weights: list[int], limit: int) -> int:
     while left_pointer <= right_pointer:
         overall_weight: int = weights[left_pointer] + weights[right_pointer]
         if overall_weight > limit:
-            count_platforms += 1
             right_pointer -= 1
-        elif overall_weight <= limit:
+        else:
             left_pointer += 1
             right_pointer -= 1
-            count_platforms += 1
+        count_platforms += 1
     return count_platforms
 
 
-print(delivery_service(weights, limit))
+if __name__ == "__main__":
+    weights: list = list(map(int, input().split()))
+    limit = int(input())
+    print(delivery_service(weights, limit))
